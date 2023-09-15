@@ -169,6 +169,10 @@
       (list-index-helper L 0)
     )
   ))
+;;Pruebas
+(list-index number? '(a 2 (1 3) b 7))
+(list-index symbol? '(a (b c) 17 foo))
+(list-index symbol? '(1 2 (a b) 3))
 
 ;: 6.
 ;; Función: swapper
@@ -333,6 +337,10 @@
     (helper L1 L2)
     )
   )
+;;Pruebas
+(mapping (lambda (d) (* d 2)) '(1 2 3) '(2 4 6))
+(mapping (lambda (d) (* d 3)) '(1 2 2) '(2 4 6))
+(mapping (lambda (d) (* d 2)) '(1 2 3) '(3 9 12))
 
 
 
@@ -473,7 +481,9 @@
         '()
         (cons (F (car L1) (car L2))
               (zip F (cdr L1) (cdr L2))))))
-
+;;Pruebas
+(zip + '(1 4) '(6 2))
+(zip * '(11 5 6) '(10 9 8))
 
 ;;--------------------------------------------------------------------
 ;; 12.
@@ -645,7 +655,9 @@
     (path-helper '() BST)
   )
 )
-
+;;Pruebas
+(path 17 '(14 (7 () (12 () ())) (26 (20 (17 () ()) ()) (31 () ()))))
+(path 5 '(10 (5 () ()) (15 (12 () ()) (20 () ()))))
 
 ;;---------------------------------------------------------------------
 ;;15.
@@ -789,7 +801,9 @@
 
     (multiplicar-matriz matriz vector))
   )
-
+;;Pruebas:
+(prod-scalar-matriz '((1 1) (2 2)) '(2 3))
+(prod-scalar-matriz '((1 1) (2 2) (3 3)) '(2 3))
 
 
 
