@@ -523,19 +523,6 @@
 ;; > (apply-operation '+ 5 3)
 
 
-
-  (define apply-operation
-    (lambda (func num1 num2)
-    (cond
-      ((eq? func '+) (+ num1 num2))
-      ((eq? func '-) (- num1 num2))
-      ((eq? func '*) (* num1 num2))
-      ((eq? func '/) (/ num1 num2))
-      (else (error "Operación no válida")))))
-  
-  (apply-operations funcs nums)))
-
-
 ;; Función: operate
 ;;
 ;; Proposito: 
@@ -559,13 +546,21 @@
       (if (null? funcs)
           nums
           (apply-operations (cdr funcs) (cons (apply-operation (car funcs) (car nums) (cadr nums)) (cddr nums))))))
-
+  
+  (define apply-operation
+    (lambda (func num1 num2)
+    (cond
+      ((eq? func '+) (+ num1 num2))
+      ((eq? func '-) (- num1 num2))
+      ((eq? func '*) (* num1 num2))
+      ((eq? func '/) (/ num1 num2))
+      (else (error "Operación no válida")))))
+  
+  (apply-operations funcs nums)))
 
 ;; Ejemplos: 
 > (operate '(+ - + - *) '(1 2 6 4 2 2))
 > (operate '(+ + + - *) '(1 2 5 4 1 6))
-
-
 
 
 ;;---------------------------------------------------------------------
